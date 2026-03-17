@@ -45,22 +45,22 @@ class SettingsRepository(nomFitxer: String, private val context: Context) {
         return sharedPreferences.getString("ultimo_concepto", "") ?: ""
     }
 
-    // Credencials de login (Usuario -> 1234) per SharedPreferences
+    // Credencials de login (Usuario -> Password) per SharedPreferences
     fun guardarCredenciales(user: String, pwd: String) {
         sharedPreferences.edit {
             putString("Usuario", user)
-                .putString("1234", pwd)
+                .putString("Password", pwd)
                 .putBoolean("logueado", true)
         }
     }
     fun obtenerUser(): String = sharedPreferences.getString("Usuario", "") ?: ""
-    fun obtenerPwd(): String = sharedPreferences.getString("1234", "") ?: ""
+    fun obtenerPwd(): String = sharedPreferences.getString("Password", "") ?: ""
     fun estaLogueado(): Boolean = sharedPreferences.getBoolean("logueado", false)
 
     fun cerrarSesion() {
         sharedPreferences.edit {
             remove("Usuario")
-                .remove("1234")
+                .remove("Password")
                 .remove("logueado")
         }
     }
