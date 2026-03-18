@@ -327,6 +327,40 @@ fun FormularioScreen(
                     }
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+            ) {
+                Column(modifier = Modifier.padding(20.dp)) {
+                    Text("Com funciona:", fontSize = 22.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
+                    BenefitItem("📝", "Omple el formulari")
+                    Spacer(modifier = Modifier.height(12.dp))
+                    BenefitItem("📤", "Les dades van directament al Google Sheet")
+                    Spacer(modifier = Modifier.height(12.dp))
+                    BenefitItem("📊", "Consulta l'historial quan vulguis")
+                    Spacer(modifier = Modifier.height(12.dp))
+                    BenefitItem("💾", "El nom i el concepte es recorden")
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
+}
+
+@Composable
+fun BenefitItem(icon: String, text: String) {
+    OutlinedTextField(
+        value = text,
+        onValueChange = {},
+        readOnly = true,
+        modifier = Modifier.fillMaxWidth(),
+        leadingIcon = {
+            Text(icon, fontSize = 24.sp)
+        }
+    )
 }
