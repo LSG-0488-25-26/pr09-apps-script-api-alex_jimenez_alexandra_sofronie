@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -60,6 +61,17 @@ fun FormularioScreen(
     var conceptoError by remember { mutableStateOf("") }
     var cantidadError by remember { mutableStateOf("") }
     var precioError by remember { mutableStateOf("") }
+
+    LaunchedEffect(enviado) {
+        if (enviado) {
+            cantidad = ""
+            precioUnitario = ""
+            apellidos = ""
+            dni = ""
+            direccion = ""
+            viewModel.resetEnviado()
+        }
+    }
 
     Column(
         modifier = Modifier
