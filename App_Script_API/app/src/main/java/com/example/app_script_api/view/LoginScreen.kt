@@ -22,6 +22,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+private const val USUARIO_VALIDO = "Usuario"
+private const val PASSWORD_VALIDO = "1234"
+
 @Composable
 fun LoginScreen(
     viewModel: FacturaViewModel,
@@ -95,6 +98,16 @@ fun LoginScreen(
                         singleLine = true,
                         visualTransformation = PasswordVisualTransformation()
                     )
+                    if (error.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            error,
+                            color = MaterialTheme.colorScheme.error,
+                            fontSize = 14.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp)
                 }
             }
         }
