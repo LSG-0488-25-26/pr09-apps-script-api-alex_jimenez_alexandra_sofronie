@@ -1,7 +1,10 @@
 package com.example.app_script_api.view
 
+import androidx.benchmark.traceprocessor.Row
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -173,6 +176,48 @@ fun FormularioScreen(
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        OutlinedTextField(
+                            value = cantidad,
+                            onValueChange = {
+                                cantidad = it
+                                cantidadError = ""
+                            },
+                            label = { Text("Quantitat") },
+                            isError = cantidadError.isNotEmpty(),
+                            supportingText = {
+                                if (cantidadError.isNotEmpty()) {
+                                    Text(cantidadError, color = MaterialTheme.colorScheme.error, fontSize = 11.sp)
+                                }
+                            },
+                            modifier = Modifier.weight(1f),
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                        OutlinedTextField(
+                            value = precioUnitario,
+                            onValueChange = {
+                                precioUnitario = it
+                                precioError = ""
+                            },
+                            label = { Text("Preu unitari (€)") },
+                            isError = precioError.isNotEmpty(),
+                            supportingText = {
+                                if (precioError.isNotEmpty()) {
+                                    Text(precioError, color = MaterialTheme.colorScheme.error, fontSize = 11.sp)
+                                }
+                            },
+                            modifier = Modifier.weight(1f),
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
+                        )
+                    }
                 }
             }
         }
