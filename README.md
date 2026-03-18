@@ -58,16 +58,16 @@ El proyecto sigue el patrón **MVVM (Model-View-ViewModel)** con StateFlow para 
 ## 🎨 Capturas de Pantalla
 
 ### Pantalla de Login
-<img src="screenshots/Screenshot_View_Login.png" width="250" alt="Login Screen">
+<img src="App_Script_API/app/src/main/java/com/example/app_script_api/screenshot/Screenshot_View_Login.png" width="250">
 
 ### Formulario de Facturas Parte 1
-<img src="screenshots/Screenshot_View_Formulario_Parte_1.png" width="250" alt="Formulario Screen">
+<img src="App_Script_API/app/src/main/java/com/example/app_script_api/screenshot/Screenshot_View_Formulario_Parte_1.png" width="250">
 
 ### Formulario de Facturas Parte 2
-<img src="screenshots/Screenshot_View_Formulario_Parte_2.png" width="250" alt="Formulario Screen">
+<img src="App_Script_API/app/src/main/java/com/example/app_script_api/screenshot/Screenshot_View_Formulario_Parte_2.png" width="250">
 
 ### Listado de Facturas
-<img src="screenshots/Screenshot_Facturas.png" width="250" alt="Facturas Screen">
+<img src="App_Script_API/app/src/main/java/com/example/app_script_api/screenshot/Screenshot_Facturas.png" width="250">
 
 ## 🚀 Tecnologías Utilizadas
 
