@@ -13,8 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -217,6 +220,59 @@ fun FormularioScreen(
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
                         )
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    if (error != null) {
+                        Text(
+                            "Error: $error",
+                            color = MaterialTheme.colorScheme.error,
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(bottom = 12.dp)
+                        )
+                    }
+
+                    if (enviado) {
+                        Text(
+                            "Factura enviada correctament!",
+                            color = Color(0xFF2E7D32),
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(bottom = 12.dp)
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            nombreError = if (nombre.isBlank()) "Introdueix el nom" else ""
+                            conceptoError = if (concepto.isBlank()) "Introdueix el concepte" else ""
+                            cantidadError = if (cantidad.toIntOrNull()?.let { it > 0 } != true) "Quantitat vàlida" else ""
+                            precioError = if (precioUnitario.toDoubleOrNull()?.let { it > 0 } != true) "Preu vàlid" else ""
+
+                            if (nombreError.isEmpty() && conceptoError.isEmpty() && cantidadError.isEmpty() && precioError.isEmpty()) {
+                                viewModel.crearFactura(
+                                    nombre = nombre.trim(),
+                                    apellidos = apellidos.trim(),
+                                    dni = dni.trim(),
+                                    direccion = direccion.trim(),
+                                    concepto = concepto.trim(),
+                                    cantidad = cantidad.toIntOrNull() ?: 0,
+                                    precioUnitario = precioUnitario.toDoubleOrNull() ?: 0.0
+                                )
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth().height(56.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)),
+                        enabled = !loading
+                    ) {
+                        if (loading) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.height(24.dp),
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                        } else {
+                            Text("Enviar factura", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                        }
                     }
                 }
             }
