@@ -1,6 +1,5 @@
 package com.example.app_script_api.view
 
-import androidx.benchmark.traceprocessor.Row
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -300,6 +299,31 @@ fun FormularioScreen(
                         ) {
                             Text("Tancar sessió", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                         }
+                    }
+                }
+            }
+
+            val cant = cantidad.toIntOrNull() ?: 0
+            val precio = precioUnitario.toDoubleOrNull() ?: 0.0
+            val totalPreview = cant * precio
+            if (cant > 0 && precio > 0) {
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9)),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                ) {
+                    Column(modifier = Modifier.padding(20.dp)) {
+                        Text("💰 Total estimat", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color(0xFF2E7D32))
+                        Text(
+                            "%.2f €".format(totalPreview),
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF2E7D32),
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
                     }
                 }
             }
