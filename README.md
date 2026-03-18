@@ -55,6 +55,11 @@ El proyecto sigue el patrón **MVVM (Model-View-ViewModel)** con StateFlow para 
 └── MainActivity.kt               # Actividad principal con NavHost
 ```
 
+## 🎨 Link video demostración
+Vídeo que muestra la app y el Google Sheets, con el flujo de datos entre ambos.
+
+[▶ Ver vídeo de demostración](https://drive.google.com/drive/folders/1eVxP9UDW2cuOua8Yg3tjZtwjqy3CYGJI?usp=share_link)
+
 ## 🎨 Capturas de Pantalla
 
 ### Pantalla de Login
