@@ -144,6 +144,35 @@ fun FormularioScreen(
                         singleLine = true,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                     )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    OutlinedTextField(
+                        value = direccion,
+                        onValueChange = { direccion = it },
+                        label = { Text("Adreça") },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    OutlinedTextField(
+                        value = concepto,
+                        onValueChange = {
+                            concepto = it
+                            conceptoError = ""
+                        },
+                        label = { Text("Concepte") },
+                        isError = conceptoError.isNotEmpty(),
+                        supportingText = {
+                            if (conceptoError.isNotEmpty()) {
+                                Text(conceptoError, color = MaterialTheme.colorScheme.error, fontSize = 12.sp)
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
                 }
             }
         }
