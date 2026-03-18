@@ -274,6 +274,33 @@ fun FormularioScreen(
                             Text("Enviar factura", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                         }
                     }
+
+                    if (navController != null) {
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Button(
+                            onClick = { navController.navigate(Routes.Facturas.route) },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3700B3))
+                        ) {
+                            Text("Ver facturas", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                        }
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Button(
+                            onClick = {
+                                viewModel.cerrarSesion()
+                                navController.navigate(Routes.Login.route) {
+                                    popUpTo(Routes.Formulario.route) { inclusive = true }
+                                }
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB00020))
+                        ) {
+                            Text("Tancar sessió", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
                 }
             }
         }
