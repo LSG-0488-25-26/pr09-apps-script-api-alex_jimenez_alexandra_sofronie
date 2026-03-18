@@ -1,7 +1,20 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+}
+
+//Cargamos las propiedades del archivo secrets.properties
+val secretsPropertiesFile = rootProject.file("app/secrets.properties")
+
+//Creamos un objeto Properties para cargar las propiedades del archivo secrets.properties
+val secretsProperties = Properties()
+//Si el archivo existe, cargamos las propiedades
+if (secretsPropertiesFile.exists()) {
+    secretsProperties.load(FileInputStream(secretsPropertiesFile))
 }
 
 android {
@@ -17,7 +30,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"\"")
+        buildConfigField("String", "API_KEY", "\"${secretsProperties["API_KEY"] ?: ""}\"")
+        buildConfigField("String", "BASE_URL", "\"${secretsProperties["BASE_URL"] ?: ""}\"")
     }
 
     buildTypes {
@@ -45,12 +59,15 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.androidx.material3)
