@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 // URL base de la API para conectar con el endpoint de Google Apps Script
 object RetrofitInstance {
-    private const val DEFAULT_URL = "ttps://script.google.com/macros/s/AKfycbyLkk7XXxCuqueCyvYlaB7z1nZFlpaK7lA5ItVRSEFv_zdtrjuXT3BAifmCRnPWWP7c/exec"
+    private const val DEFAULT_URL = "https://script.google.com/macros/s/AKfycbyLkk7XXxCuqueCyvYlaB7z1nZFlpaK7lA5ItVRSEFv_zdtrjuXT3BAifmCRnPWWP7c/exec"
     private val BASE_URL: String
         get() {
             val url = if (BuildConfig.BASE_URL.isNotEmpty()) BuildConfig.BASE_URL else DEFAULT_URL
